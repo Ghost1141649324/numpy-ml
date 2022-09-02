@@ -235,3 +235,16 @@ def gini(y):
     hist = np.bincount(y)
     N = np.sum(hist)
     return 1 - sum([(i / N) ** 2 for i in hist])
+
+if __name__ == '__main__':
+    """
+    对决策树代码进行测试
+    """
+
+    x = np.random.randn(10, 100)
+    y = np.random.randint(0, 5, size=(100), dtype=np.uint8)
+
+    # 构建决策树分类器
+
+
+
