@@ -135,7 +135,7 @@ class DecisionTree:
             return Leaf(v)
 
         cur_depth += 1
-        self.depth = max(self.depth, cur_depth)
+        # self.depth = max(self.depth, cur_depth)
 
         N, M = X.shape
         feat_idxs = np.random.choice(M, self.n_feats, replace=False)
@@ -240,11 +240,19 @@ if __name__ == '__main__':
     """
     对决策树代码进行测试
     """
-
-    x = np.random.randn(10, 100)
+    np.random.seed(123)
+    x = np.random.randn(100, 10)
     y = np.random.randint(0, 5, size=(100), dtype=np.uint8)
 
     # 构建决策树分类器
+    dtr = DecisionTree(n_feats=10, seed=123, max_depth=5)
+    dtr.fit(x, y)
+    y_pred = dtr.predict(x)
+    print(y_pred)
+    y_pred_prob= dtr.predict_class_probs(x)
+    print(y_pred_prob)
+
+
 
 
 
