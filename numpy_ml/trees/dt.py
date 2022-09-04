@@ -127,7 +127,7 @@ class DecisionTree:
                 prob[Y[0]] = 1.0
             return Leaf(prob) if self.classifier else Leaf(Y[0])
 
-        # if we have reached max_depth, return a leaf
+        # if we have reached max_d nepth, return a leaf
         if cur_depth >= self.max_depth:
             v = np.mean(Y, axis=0)
             if self.classifier:

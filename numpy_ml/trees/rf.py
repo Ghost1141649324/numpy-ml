@@ -1,6 +1,6 @@
 import numpy as np
-from .dt import DecisionTree
-
+# from .dt import DecisionTree
+from dt import DecisionTree
 
 def bootstrap_sample(X, Y):
     N, M = X.shape
@@ -97,3 +97,17 @@ class RandomForest:
         else:
             out = [np.mean(x) for x in predictions.T]
         return np.array(out)
+
+
+if __name__ == '__main__':
+    """
+    随机森林进行测试
+    """
+    np.random.seed(123)
+    x = np.random.randn(100, 20)
+    y = np.random.randint(0, 5, size=(100))
+    clf = RandomForest(n_trees=10, max_depth=10, n_feats=15)
+    clf.fit(x,y)
+    y_pred = clf.predict(x)
+
+    print(y_pred)
